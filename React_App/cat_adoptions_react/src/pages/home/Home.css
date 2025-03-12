@@ -1,0 +1,12 @@
+.row-container {
+    display: flex;
+    flex-direction: row;
+    height: 98vh;
+    gap: 1vh;
+}
+
+.column-container {
+    display: flex;
+    flex-direction: column;
+    height: 98vh;
+}

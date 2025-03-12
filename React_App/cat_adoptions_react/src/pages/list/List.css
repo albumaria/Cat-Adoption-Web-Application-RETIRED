@@ -1,0 +1,17 @@
+.row-container-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 1%;
+}
+
+.column-container-list {
+    display: flex;
+    flex-direction: column;
+    height: 125vh;
+}
+
+.list-wrapper {
+    flex-grow: 1;  /* Allows it to expand */
+    display: flex; /* Ensures it stretches properly */
+}

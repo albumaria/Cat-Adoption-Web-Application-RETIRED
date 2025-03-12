@@ -1,0 +1,9 @@
+.upper-border-text {
+    fill: var(--eggplant);
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.upper-border {
+    margin-bottom: 1%;
+}

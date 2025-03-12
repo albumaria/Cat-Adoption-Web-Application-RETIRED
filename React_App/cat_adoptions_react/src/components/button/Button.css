@@ -1,0 +1,8 @@
+.button-text {
+    fill: var(--orange);
+    font-size: 28px;
+}
+
+.button {
+    width: 28vw;
+}
