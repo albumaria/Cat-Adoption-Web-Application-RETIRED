@@ -1,6 +1,6 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Home from "./pages/home/Home";
-import CatList from "./pages/list/List";
+import CatList from "./pages/cats/Cats";
 import "./index.css";
 
 function App() {

@@ -1,12 +1,14 @@
 import React from "react";
 import UpperBorder from "../../components/upper_border/UpperBorder";
-import "./List.css";
+import "./Cats.css";
 import Rectangle from "../../components/rectangle/Rectangle";
 import Button from "../../components/button/Button";
-import ListItem from "../../components/list_item/ListItem";
+import CatCard from "../../components/cat_card/CatCard";
 
 
 const Home = () => {
+    let catEntity = {image: "https://i.pinimg.com/736x/ff/f0/df/fff0dfb34aca08f19f9463a428230149.jpg", name: "amadeus"};
+
     return (
         <div>
             <div className='column-container-list'>
@@ -14,7 +16,7 @@ const Home = () => {
 
                 <div className='list-wrapper'>
                     <Rectangle type="list">
-                        <ListItem></ListItem>
+                        <CatCard cat={catEntity}></CatCard>
                     </Rectangle>
                 </div>
 
