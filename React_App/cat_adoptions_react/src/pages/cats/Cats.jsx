@@ -3,22 +3,21 @@ import UpperBorder from "../../components/upper_border/UpperBorder";
 import "./Cats.css";
 import Rectangle from "../../components/rectangle/Rectangle";
 import Button from "../../components/button/Button";
-import CatCard from "../../components/cat_card/CatCard";
-
+import CatList from "../../components/cat_list/CatList";
+import FilterBar from "../../components/filter_bar/FilterBar";
+import Pagination from "../../components/pagination/Pagination";
 
 const Home = () => {
-    let catEntity = {image: "https://i.pinimg.com/736x/ff/f0/df/fff0dfb34aca08f19f9463a428230149.jpg", name: "amadeus"};
-
     return (
         <div>
             <div className='column-container-list'>
                 <UpperBorder content="Adopt a Cat!"/>
 
-                <div className='list-wrapper'>
-                    <Rectangle type="list">
-                        <CatCard cat={catEntity}></CatCard>
-                    </Rectangle>
-                </div>
+                <Rectangle type="list">
+                    <FilterBar></FilterBar>
+                    <CatList></CatList>
+                    <Pagination totalPages={3} currentPage={2}></Pagination>
+                </Rectangle>
 
 
             </div>

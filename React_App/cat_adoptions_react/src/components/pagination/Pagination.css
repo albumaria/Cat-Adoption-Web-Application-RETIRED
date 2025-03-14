@@ -1,0 +1,34 @@
+.pagination-wrapper {
+    height: 7vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.left-right-buttons {
+    height: 5vh;
+    background: none;
+    border: none;
+}
+
+.current-page-button {
+    height: 6vh;
+    width: 12vh;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.current-page-number {
+    font-family: 'Rowdies', sans-serif;
+    position: absolute;
+    font-size: 28px;
+    font-weight: bold;
+    color: #F2B45A;
+}
+
+
+
