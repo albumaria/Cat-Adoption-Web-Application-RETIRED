@@ -19,3 +19,9 @@
     font-weight: bold;
     color: var(--eggplant);
 }
+
+.cat-card.selected {
+    width: 24vh;
+    border-radius: 20px;
+    background-color: #FFD5D2;
+}

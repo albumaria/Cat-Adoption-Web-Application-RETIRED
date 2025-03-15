@@ -30,22 +30,28 @@ const cats = [
     { name: "Suceava", image: "https://media.discordapp.net/attachments/909114093540089906/1350518582856912967/20230727_151550.jpg?ex=67d707f1&is=67d5b671&hm=ff349e8287699e33d46bfecd3b3a34456d7504bd534a05a3953069253a8ed255&=&format=webp&width=927&height=1237"},
     { name: "Micuta", image: "https://media.discordapp.net/attachments/647096625394745374/1350464521734459465/20250315_144230.jpg?ex=67d6d598&is=67d58418&hm=6d6a277c082515e06517a23ee2836f351ad577ab536df6f355cad37a1b789e71&=&format=webp&width=639&height=1237" },
     { name: "Piti", image: "https://media.discordapp.net/attachments/647096625394745374/1350464522296754306/20250315_144326.jpg?ex=67d6d598&is=67d58418&hm=237671aa1acbed0c2be04ba7bb555c192dd8e6aa27caa9520f008373944a2af0&=&format=webp&width=1581&height=1237" },
+    { name: "Bubico", image: "https://media.discordapp.net/attachments/909114093540089906/1350559719722451116/image.png?ex=67d72e41&is=67d5dcc1&hm=b3df7928740284140dd8821876f6cbf25508964279d0632aa2726fb4d1f61aaa&=&format=webp&quality=lossless&width=1211&height=1183"},
+    { name: "Fernando", image: "https://media.discordapp.net/attachments/1168244480126754848/1350559905530249316/image.png?ex=67d72e6d&is=67d5dced&hm=b5592a2ae203cd7748a243068859c1c2131d455c541cf45b995349582f9124c9&=&format=webp&quality=lossless&width=747&height=711" },
+    { name: "Piticlic", image: "https://media.discordapp.net/attachments/1168244480126754848/1350550282190323835/IMG_2580.jpg?ex=67d72577&is=67d5d3f7&hm=204815bf32f2cb39d5c365606d9485c1b322a262ed551918993a3b9aadf38c16&=&format=webp&width=769&height=769" },
 ];
 
 const Home = () => {
-    const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState("");
-    const catsPerPage = 10;
-    const startIndex = (currentPage - 1) * catsPerPage;
-
     const filteredCats = cats.filter(cat =>
         cat.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const catsPerPage = 10;
+    const startIndex = (currentPage - 1) * catsPerPage;
     const totalPages = Math.ceil(filteredCats.length / catsPerPage);
-
     const handlePageChange = (newPage) => {
         setCurrentPage(newPage);
+    };
+
+    const [selectedCat, setSelectedCat] = useState(null);
+    const handleCatSelection = (cat) => {
+        setSelectedCat(prevSelectedCat => (prevSelectedCat === cat ? null : cat));  // if the now selected cat is equal to previous, deselect
     };
 
     return (
@@ -55,7 +61,7 @@ const Home = () => {
 
                 <Rectangle type="list">
                     <FilterBar onSearch={setSearchQuery}></FilterBar>
-                    <CatList catList={filteredCats} startIndex={startIndex}></CatList>
+                    <CatList catList={filteredCats} startIndex={startIndex} selectedCat={selectedCat} onCatSelect={handleCatSelection}></CatList>
                     <Pagination totalPages={totalPages} currentPage={currentPage} onPageChange={handlePageChange}></Pagination>
                 </Rectangle>
 
