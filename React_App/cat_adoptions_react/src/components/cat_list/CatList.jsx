@@ -3,25 +3,17 @@ import CatCard from "../cat_card/CatCard";
 import "../../assets/tole.jpg"
 import "./CatList.css"
 
-const CatList = () => {
-    const cats = [
-        { name: "lolec", image: "" },
-        { name: "bolec", image: "" },
-        { name: "bibi", image: "" },
-        { name: "tina", image: "" },
-        { name: "amadeus", image: "" },
-        { name: "sabrina", image: "" },
-        { name: "carpenter", image: "" },
-        { name: "frou frou", image: "" },
-        { name: "argentina", image: "" },
-        { name: "eugenia", image: "" },
-    ];
-
+const CatList = ({ catList, startIndex }) => {
+    const catsToShow = catList.slice(startIndex, startIndex + 10);
+    const placeholders = Array(10 - catsToShow.length).fill(null); // Fill empty spots with placeholders
 
     return (
         <div className="cat-list">
-            {cats.map((cat, index) => (
-                <CatCard key={index} cat={cat} />
+            {catsToShow.map((cat, index) => (
+                <CatCard key={startIndex + index} cat={cat} />
+            ))}
+            {placeholders.map((_, index) => (
+                <div key={`placeholder-${index}`} className="cat-placeholder" />
             ))}
         </div>
     );

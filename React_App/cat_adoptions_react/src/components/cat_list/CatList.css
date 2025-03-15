@@ -1,10 +1,15 @@
 .cat-list {
     display: grid;
-    grid-template-columns: auto auto auto auto auto;
-    grid-template-rows: auto auto;
+    grid-template-columns: repeat(5, auto);
+    grid-template-rows: repeat(2, auto);
     align-items: center;
     justify-content: space-evenly;
-    border-radius: 20px;
     width: 100%;
     height: 80%;
+}
+
+.cat-placeholder {
+    width: 24vh;
+    height: calc(16vw + 3.5vh + 10px);
+    border-radius: 20px;
 }
