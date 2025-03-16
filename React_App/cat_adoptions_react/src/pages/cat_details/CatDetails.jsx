@@ -1,14 +1,13 @@
 import { useParams } from "react-router-dom";
 import "./CatDetails.css";
-import CatEntities from "../../assets/CatEntities";
 import Rectangle from "../../components/rectangle/Rectangle";
 import React from "react";
 import CatDetailText from "../../components/cat_detail_text/CatDetailText";  // Import the same cat list
 import "./CatDetails.css"
 
-const CatDetail = () => {
-    const { catName } = useParams(); // Get cat name from URL
-    const cat = CatEntities.find(c => c.name.toLowerCase() === catName.toLowerCase()); // Find the cat
+const CatDetail = ( { catEntities }) => {
+    const { catName } = useParams();
+    const cat = catEntities.find(c => c.name.toLowerCase() === catName.toLowerCase());
 
 
     return (

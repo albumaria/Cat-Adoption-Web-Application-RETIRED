@@ -7,11 +7,10 @@ import Button from "../../components/button/Button";
 import CatContainer from "../../components/cat_container/CatContainer";
 import FilterBar from "../../components/filter_bar/FilterBar";
 import Pagination from "../../components/pagination/Pagination";
-import CatEntities from "../../assets/CatEntities";
 
 
-const CatList = () => {
-    const [catEntities, setCatEntities] = useState([...CatEntities]);
+const CatList = ({ catEntities, setCatEntities }) => {
+    const navigate = useNavigate();
 
     const [searchQuery, setSearchQuery] = useState("");
     const filteredCats = catEntities.filter(cat =>
@@ -26,7 +25,6 @@ const CatList = () => {
         setCurrentPage(newPage);
     };
 
-    const navigate = useNavigate();
     const [selectedCat, setSelectedCat] = useState(null);
     const handleCatSelection = (cat) => {
         if (selectedCat === cat) {
@@ -38,9 +36,18 @@ const CatList = () => {
 
     const handleDelete = () => {
         if (!selectedCat) return;
-        const updatedCats = catEntities.filter(cat => cat !== selectedCat);
-        setCatEntities(updatedCats);
+        setCatEntities(catEntities.filter(cat => cat !== selectedCat));
         setSelectedCat(null);
+    };
+
+    const handleAdd = () => {
+        navigate("/add");
+    };
+
+    const handleUpdate = () => {
+        if (selectedCat) {
+            navigate(`/update`, { state: { selectedCat }});
+        }
     };
 
 
@@ -58,9 +65,9 @@ const CatList = () => {
 
             </div>
             <div className='row-container-list'>
-                <Button content="Add"></Button>
+                <Button content="Add" onClick={handleAdd}></Button>
                 <Button content="Delete" onClick={handleDelete}></Button>
-                <Button content="Update"></Button>
+                <Button content="Update" onClick={handleUpdate}></Button>
             </div>
         </div>
     )

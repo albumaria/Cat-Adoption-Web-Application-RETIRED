@@ -1,0 +1,18 @@
+.add-container {
+    height: 71vh;
+
+}
+
+.add-rectangle {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 2vh;
+    justify-content: center;
+    margin-left: 4vw;
+}
+
+.error-box {
+    color: #51294B;
+    font-size: 4vh;
+}
