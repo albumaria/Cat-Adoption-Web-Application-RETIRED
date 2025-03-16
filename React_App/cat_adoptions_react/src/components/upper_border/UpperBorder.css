@@ -7,3 +7,10 @@
 .upper-border {
     margin-bottom: 1%;
 }
+
+.upper-border-centered-text {
+    margin-bottom: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

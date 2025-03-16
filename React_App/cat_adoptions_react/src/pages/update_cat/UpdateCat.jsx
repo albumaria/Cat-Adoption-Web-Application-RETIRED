@@ -1,85 +1,68 @@
 import "./UpdateCat.css";
-// import React, { useState, useEffect } from "react";
-// import { useLocation, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import Rectangle from "../../components/rectangle/Rectangle";
+import InputField from "../../components/input_field/InputField";
+import Button from "../../components/button/Button";
+import InputFileButton from "../../components/input_file_button/InputFileButton";
+import UpperBorderCenteredText from "../../components/upper_border/UpperBorderCenteredText";
 
-const UpdateCat = () => {
-    // const navigate = useNavigate();
-    // const location = useLocation();
-    // const { selectedCat } = location.state || {};  // Access the selected cat passed from CatList
-    //
-    // const [catData, setCatData] = useState({
-    //     name: "",
-    //     breed: "",
-    //     age: "",
-    // });
-    //
-    // // Pre-fill the form with the selected cat's data if available
-    // useEffect(() => {
-    //     if (selectedCat) {
-    //         setCatData({
-    //             name: selectedCat.name,
-    //             breed: selectedCat.breed,
-    //             age: selectedCat.age,
-    //         });
-    //     }
-    // }, [selectedCat]);
-    //
-    // const handleChange = (e) => {
-    //     const { name, value } = e.target;
-    //     setCatData({
-    //         ...catData,
-    //         [name]: value,
-    //     });
-    // };
-    //
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     // Handle form submission logic
-    //     // You could update the cat list here, for example:
-    //     console.log("Updated Cat Data:", catData);
-    //     // Navigate back to the list page
-    //     navigate("/");
-    // };
-    //
-    // if (!selectedCat) {
-    //     return <div>Cat not found!</div>;
-    // }
-    //
-    // return (
-    //     <div>
-    //         <h2>Update Cat</h2>
-    //         <form onSubmit={handleSubmit}>
-    //             <div>
-    //                 <label>Name:</label>
-    //                 <input
-    //                     type="text"
-    //                     name="name"
-    //                     value={catData.name}
-    //                     onChange={handleChange}
-    //                 />
-    //             </div>
-    //             <div>
-    //                 <label>Breed:</label>
-    //                 <input
-    //                     type="text"
-    //                     name="breed"
-    //                     value={catData.breed}
-    //                     onChange={handleChange}
-    //                 />
-    //             </div>
-    //             <div>
-    //                 <label>Age:</label>
-    //                 <input
-    //                     type="text"
-    //                     name="age"
-    //                     value={catData.age}
-    //                     onChange={handleChange}
-    //                 />
-    //             </div>
-    //             <button type="submit">Update</button>
-    //         </form>
-    //     </div>
-    // );
+const UpdateCat = ({ catEntities, setCatEntities }) => {
+    const { catName } = useParams(); // Get cat name from URL
+    const cat = catEntities.find(c => c.name.toLowerCase() === catName.toLowerCase()); // Find cat
+
+    const [name, setName] = useState(cat?.name || "");
+    const [gender, setGender] = useState(cat?.gender || "");
+    const [age, setAge] = useState(cat?.age || "");
+    const [weight, setWeight] = useState(cat?.weight || "");
+    const [description, setDescription] = useState(cat?.description || "");
+    const [image, setImage] = useState(cat?.image || "");
+    const [error, setError] = useState("");
+
+    const navigate = useNavigate();
+
+    const validateInputs = () => {
+        if (!name.trim()) return "Name must be a string and cannot be empty.";
+        if (!["F", "M"].includes(gender.toUpperCase())) return "Gender must be 'F' or 'M'.";
+        if (!/^\d+$/.test(age)) return "Age must be a whole number.";
+        if (!/^\d+(\.\d+)?$/.test(weight)) return "Weight must be a number (e.g., 4.5).";
+        if (!description.trim()) return "Description cannot be empty.";
+        if (!image.trim()) return "You must upload an image.";
+        return null;
+    };
+
+    const handleUpdateCat = () => {
+        const validationError = validateInputs();
+        if (validationError) {
+            setError(validationError);
+            return;
+        }
+
+        const updatedCat = { name, gender, age, weight, description, image };
+        setCatEntities(catEntities.map(c => (c.name.toLowerCase() === catName.toLowerCase() ? updatedCat : c)));
+        navigate("/cats");
+    };
+
+    return (
+        <div>
+            <UpperBorderCenteredText content="Update Cat Info!"></UpperBorderCenteredText>
+            <div className="add-container">
+                <Rectangle type="list">
+                    <div className="add-rectangle">
+                        {error && <div className="error-box">{error}</div>}
+                        <InputField placeHolder="Name" value={name} onChange={(e) => setName(e.target.value)}></InputField>
+                        <InputField placeHolder="Gender (F/M)" value={gender} onChange={(e) => setGender(e.target.value)}></InputField>
+                        <InputField placeHolder="Age" value={age} onChange={(e) => setAge(e.target.value)}></InputField>
+                        <InputField placeHolder="Weight" value={weight} onChange={(e) => setWeight(e.target.value)}></InputField>
+                        <InputField placeHolder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></InputField>
+                        <InputFileButton onFileSelect={(url) => setImage(url)} />
+                        <Button content="Update Cat" onClick={handleUpdateCat}></Button>
+                    </div>
+                </Rectangle>
+            </div>
+
+        </div>
+    );
 };
 
 export default UpdateCat;

@@ -5,13 +5,9 @@ const FilterBar = ({ onSearch }) => {
     const [searchValue, setSearchValue] = useState("");
 
     const handleInputChange = (event) => {
-        setSearchValue(event.target.value); // Only updates the local state
-    };
-
-    const handleKeyDown = (event) => {
-        if (event.key === "Enter" && onSearch) {
-            onSearch(searchValue); // Only updates parent when Enter is pressed
-        }
+        const newSearchValue = event.target.value;
+        setSearchValue(newSearchValue);
+        onSearch(newSearchValue); // Immediately update the search query in the parent
     };
 
     return (
@@ -20,8 +16,7 @@ const FilterBar = ({ onSearch }) => {
                placeholder="Search..."
                value={searchValue}
                onChange={handleInputChange}
-               onKeyDown={handleKeyDown}>
-
+        >
         </input>
     );
 };

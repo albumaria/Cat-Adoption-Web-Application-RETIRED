@@ -1,11 +1,11 @@
 import "./AddCat.css"
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom";
-import UpperBorder from "../../components/upper_border/UpperBorder";
 import Rectangle from "../../components/rectangle/Rectangle";
 import InputField from "../../components/input_field/InputField";
 import Button from "../../components/button/Button";
 import InputFileButton from "../../components/input_file_button/InputFileButton";
+import UpperBorderCenteredText from "../../components/upper_border/UpperBorderCenteredText";
 
 const AddCat = ( { addCat } ) => {
     const [name, setName] = useState("");
@@ -42,7 +42,7 @@ const AddCat = ( { addCat } ) => {
 
     return (
         <div>
-            <UpperBorder content="Add a New Cat!"></UpperBorder>
+            <UpperBorderCenteredText content="Add a New Cat!"></UpperBorderCenteredText>
             <div className="add-container">
                 <Rectangle type="list">
                     <div className="add-rectangle">

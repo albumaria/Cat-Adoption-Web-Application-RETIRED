@@ -14,7 +14,7 @@ const CatList = ({ catEntities, setCatEntities }) => {
 
     const [searchQuery, setSearchQuery] = useState("");
     const filteredCats = catEntities.filter(cat =>
-        cat.name.toLowerCase().includes(searchQuery.toLowerCase())
+        cat.name?.toLowerCase().includes(searchQuery.trim().toLowerCase())
     );
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -38,6 +38,7 @@ const CatList = ({ catEntities, setCatEntities }) => {
         if (!selectedCat) return;
         setCatEntities(catEntities.filter(cat => cat !== selectedCat));
         setSelectedCat(null);
+        setSearchQuery("");
     };
 
     const handleAdd = () => {
@@ -46,7 +47,7 @@ const CatList = ({ catEntities, setCatEntities }) => {
 
     const handleUpdate = () => {
         if (selectedCat) {
-            navigate(`/update`, { state: { selectedCat }});
+            navigate(`/update/${selectedCat.name.toLowerCase()}`);
         }
     };
 
