@@ -1,8 +1,8 @@
 import React from "react";
 import CatCard from "../cat_card/CatCard";
-import "./CatList.css"
+import "./CatContainer.css"
 
-const CatList = ({ catList, startIndex, selectedCat, onCatSelect }) => {
+const CatContainer = ({ catList, startIndex, selectedCat, onCatSelect }) => {
     const catsToShow = catList.slice(startIndex, startIndex + 10);
     const placeholders = Array(10 - catsToShow.length).fill(null); // Fill empty spots with placeholders
 
@@ -23,4 +23,4 @@ const CatList = ({ catList, startIndex, selectedCat, onCatSelect }) => {
 };
 
 
-export default CatList;
+export default CatContainer;

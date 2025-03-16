@@ -1,0 +1,20 @@
+.cat-detail-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 5vh;
+}
+
+.cat-detail-name {
+    font-size: 10vh;
+}
+
+.cat-details {
+    font-size: 3vh;
+}
+
+.cat-description {
+    text-align: justify;
+    font-size: 5vh;
+}

@@ -1,0 +1,13 @@
+.cat-detail {
+    height: 98vh;
+    display: flex;
+    justify-content: space-between;
+    color: #51294B;
+    gap: 1vh;
+}
+
+.cat-detail-rectangle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
