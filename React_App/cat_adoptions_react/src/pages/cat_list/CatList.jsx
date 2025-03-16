@@ -11,8 +11,10 @@ import CatEntities from "../../assets/CatEntities";
 
 
 const CatList = () => {
+    const [catEntities, setCatEntities] = useState([...CatEntities]);
+
     const [searchQuery, setSearchQuery] = useState("");
-    const filteredCats = CatEntities.filter(cat =>
+    const filteredCats = catEntities.filter(cat =>
         cat.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
@@ -28,11 +30,19 @@ const CatList = () => {
     const [selectedCat, setSelectedCat] = useState(null);
     const handleCatSelection = (cat) => {
         if (selectedCat === cat) {
-            navigate(`/${cat.name.toLowerCase()}`); // Navigate to cat detail page
+            navigate(`/${cat.name.toLowerCase()}`);
         } else {
             setSelectedCat(cat);
         }
     };
+
+    const handleDelete = () => {
+        if (!selectedCat) return;
+        const updatedCats = catEntities.filter(cat => cat !== selectedCat);
+        setCatEntities(updatedCats);
+        setSelectedCat(null);
+    };
+
 
     return (
         <div>
@@ -49,7 +59,7 @@ const CatList = () => {
             </div>
             <div className='row-container-list'>
                 <Button content="Add"></Button>
-                <Button content="Delete"></Button>
+                <Button content="Delete" onClick={handleDelete}></Button>
                 <Button content="Update"></Button>
             </div>
         </div>

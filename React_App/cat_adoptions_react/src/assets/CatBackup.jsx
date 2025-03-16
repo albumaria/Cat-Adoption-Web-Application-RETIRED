@@ -1,5 +1,4 @@
-
-const CatEntities = [
+const CatBackup = [
     { name: "Kiryu", gender:"M", age:2, weight:2.3, description:"Kiryu is an active cat who's always willing to seek justice and do what's right. You can always count on him to protect you."
         , image: "https://i.pinimg.com/736x/b3/dd/92/b3dd92d6db84a0d98a86d797f27c1eea.jpg" },
     { name: "Cola", gender:"F", age:9, weight:1.4, description:"Cola is an elderly cat who is quite small and sweet. She's just the right companion for a lazy day in."
@@ -50,5 +49,8 @@ const CatEntities = [
         image: "https://media.discordapp.net/attachments/1168244480126754848/1350559905530249316/image.png?ex=67d72e6d&is=67d5dced&hm=b5592a2ae203cd7748a243068859c1c2131d455c541cf45b995349582f9124c9&=&format=webp&quality=lossless&width=747&height=711" },
     { name: "Piticlic", gender:"M", age:0, weight:0.4, description:"Piticlic is a very tiny kitten who likes to be held and bottle-fed.",
         image: "https://media.discordapp.net/attachments/1168244480126754848/1350550282190323835/IMG_2580.jpg?ex=67d72577&is=67d5d3f7&hm=204815bf32f2cb39d5c365606d9485c1b322a262ed551918993a3b9aadf38c16&=&format=webp&width=769&height=769" },
+    { name: "BA", image: ""}
 ];
-export default CatEntities;
+
+
+export default CatBackup;
