@@ -8,7 +8,7 @@ const Rectangle = ({
                        height = "100%",
                        minHeight = "200px",
                        backgroundColor = "var(--bubblegum)",
-                       borderRadius = "20px",
+                       borderRadius = "2.5vh",
                        imageSrc,
                    }) => {
     return (

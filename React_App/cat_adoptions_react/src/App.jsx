@@ -25,6 +25,7 @@ function App() {
                 <Route path="/:catName" element={<CatDetails catEntities={catEntities}/>} />
                 <Route path="/add" element={<AddCat addCat={addCat}/>} />
                 <Route path="/update/:catName" element={<UpdateCat catEntities={catEntities} setCatEntities={setCatEntities}/>} />
+                <Route path="/nothing"/>
             </Routes>
         </BrowserRouter>
     </div>

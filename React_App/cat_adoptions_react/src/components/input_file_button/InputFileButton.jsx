@@ -30,7 +30,7 @@ const InputFileButton = ( { onFileSelect } ) => {
                 style={{ display: "none" }}
                 onChange={handleFileChange}
             />
-            {fileName && <p>{fileName}</p>}
+            {fileName && <p className="file-name">{fileName}</p>}
         </div>
     );
 };

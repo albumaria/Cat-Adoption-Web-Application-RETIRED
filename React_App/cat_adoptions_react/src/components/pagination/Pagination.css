@@ -25,7 +25,7 @@
 .current-page-number {
     font-family: 'Rowdies', sans-serif;
     position: absolute;
-    font-size: 28px;
+    font-size: 3vh;
     font-weight: bold;
     color: #F2B45A;
 }
