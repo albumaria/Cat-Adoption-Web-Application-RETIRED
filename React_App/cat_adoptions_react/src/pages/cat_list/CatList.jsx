@@ -7,6 +7,7 @@ import Button from "../../components/button/Button";
 import CatContainer from "../../components/cat_container/CatContainer";
 import FilterBar from "../../components/filter_bar/FilterBar";
 import Pagination from "../../components/pagination/Pagination";
+import SortButton from "../../components/sort_button/SortButton";
 
 
 const CatList = ({ catEntities, setCatEntities }) => {
@@ -51,6 +52,35 @@ const CatList = ({ catEntities, setCatEntities }) => {
         }
     };
 
+    const [originalOrder] = useState([...catEntities]);
+    const [sortText, setSortText] = useState("Sort ⬆");
+    const [currentSort, setCurrentSort] = useState("");
+    const handleSort = () => {
+        if(currentSort === "") {
+            setCurrentSort("asc");
+            const sortedCats = [...catEntities].sort((a, b) => a.name.localeCompare(b.name));
+            setCatEntities(sortedCats);
+            setSortText("Sort ⬇")
+            setSelectedCat(null);
+        }
+
+        if(currentSort === "asc") {
+            setCurrentSort("desc");
+            const sortedCats = [...catEntities].sort((a, b) => -(a.name.localeCompare(b.name)));
+            setCatEntities(sortedCats);
+            setSortText("Undo Sort")
+            setSelectedCat(null);
+        }
+
+        if(currentSort === "desc") {
+            setCurrentSort("");
+            const sortedCats = [...originalOrder];
+            setCatEntities(sortedCats);
+            setSortText("Sort ⬆")
+            setSelectedCat(null);
+        }
+    };
+
 
     return (
         <div>
@@ -58,14 +88,17 @@ const CatList = ({ catEntities, setCatEntities }) => {
                 <UpperBorder content="Adopt a Cat!"/>
 
                 <Rectangle type="list">
-                    <FilterBar onSearch={setSearchQuery}></FilterBar>
+                    <div className="row-container-list">
+                        <FilterBar onSearch={setSearchQuery}></FilterBar>
+                        <SortButton className="sort-button" content={sortText} onClick={handleSort}></SortButton>
+                    </div>
                     <CatContainer catList={filteredCats} startIndex={startIndex} selectedCat={selectedCat} onCatSelect={handleCatSelection}></CatContainer>
                     <Pagination totalPages={totalPages} currentPage={currentPage} onPageChange={handlePageChange}></Pagination>
                 </Rectangle>
 
 
             </div>
-            <div className='row-container-list'>
+            <div className='button-container'>
                 <Button content="Add" onClick={handleAdd}></Button>
                 <Button content="Delete" onClick={handleDelete}></Button>
                 <Button content="Update" onClick={handleUpdate}></Button>
@@ -73,7 +106,6 @@ const CatList = ({ catEntities, setCatEntities }) => {
         </div>
     )
 };
-
 
 
 export default CatList;

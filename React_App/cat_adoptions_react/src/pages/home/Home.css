@@ -1,8 +1,8 @@
 .row-container {
     display: flex;
     flex-direction: row;
-    height: 98vh;
     gap: 1vh;
+    height: 72vh;
 }
 
 .column-container {

@@ -2,11 +2,21 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-left: 4vw;
     margin-top: 1%;
+    height: 5.2vh;
+    margin-right: 4vw;
 }
 
 .column-container-list {
     display: flex;
     flex-direction: column;
     height: 125vh;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 1vh;
 }
