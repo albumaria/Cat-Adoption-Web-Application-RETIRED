@@ -15,6 +15,9 @@ const Home = () => {
                     <Link to="/cats">
                         <Button content={"Show Cat List"} />
                     </Link>
+                    <Link to="/statistics">
+                        <Button content={"Show Cat Statistics"} />
+                    </Link>
                 </Rectangle>
                 <Rectangle type="right" width="50%" backgroundColor="var(--eggplant)" imageSrc={CatBanner} />
             </div>

@@ -7,6 +7,7 @@ import CatDetails from "./pages/cat_details/CatDetails";
 import AddCat from "./pages/add_cat/AddCat";
 import UpdateCat from "./pages/update_cat/UpdateCat"
 import CatEntities from "./assets/CatEntities";
+import Statistics from "./pages/statistics/Statistics";
 
 function App() {
     const [catEntities, setCatEntities] = useState([...CatEntities]);
@@ -26,6 +27,7 @@ function App() {
                 <Route path="/add" element={<AddCat addCat={addCat}/>} />
                 <Route path="/update/:catName" element={<UpdateCat catEntities={catEntities} setCatEntities={setCatEntities}/>} />
                 <Route path="/nothing"/>
+                <Route path="/statistics" element={<Statistics catEntities={catEntities}/>}/>
             </Routes>
         </BrowserRouter>
     </div>

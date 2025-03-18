@@ -1,8 +1,15 @@
 .sort-button-text {
     fill: var(--eggplant);
-    font-size: 28px;
+    font-size: 3vh;
 }
 
 .sort-button {
-
+    color: var(--eggplant);
+    background-image: url("https://i.imgur.com/vXBlegT.png");
+    border-radius: 2.5vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

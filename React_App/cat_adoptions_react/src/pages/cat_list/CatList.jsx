@@ -29,6 +29,10 @@ const CatList = ({ catEntities, setCatEntities }) => {
     const [selectedCat, setSelectedCat] = useState(null);
     const handleCatSelection = (cat) => {
         if (selectedCat === cat) {
+            setCurrentSort("");
+            setSortText("Sort ⬆");
+            setAgeGroup("Show Kittens");
+            setCatEntities([...originalOrderRef.current]);
             navigate(`/${cat.name.toLowerCase()}`);
         } else {
             setSelectedCat(cat);
@@ -52,33 +56,60 @@ const CatList = ({ catEntities, setCatEntities }) => {
         }
     };
 
-    const [originalOrder] = useState([...catEntities]);
+    const originalOrderRef = React.useRef([...catEntities]);
     const [sortText, setSortText] = useState("Sort ⬆");
     const [currentSort, setCurrentSort] = useState("");
+    const [preSortCats, setPreSortCats] = useState([]);
     const handleSort = () => {
-        if(currentSort === "") {
+        if (currentSort === "") {
             setCurrentSort("asc");
+            setPreSortCats([...catEntities]); // Save the current filtered list
             const sortedCats = [...catEntities].sort((a, b) => a.name.localeCompare(b.name));
             setCatEntities(sortedCats);
-            setSortText("Sort ⬇")
-            setSelectedCat(null);
-        }
-
-        if(currentSort === "asc") {
+            setSortText("Sort ⬇");
+        } else if (currentSort === "asc") {
             setCurrentSort("desc");
-            const sortedCats = [...catEntities].sort((a, b) => -(a.name.localeCompare(b.name)));
+            const sortedCats = [...catEntities].sort((a, b) => b.name.localeCompare(a.name));
             setCatEntities(sortedCats);
-            setSortText("Undo Sort")
-            setSelectedCat(null);
+            setSortText("Undo Sort");
+        } else {
+            setCurrentSort("");
+            setCatEntities([...preSortCats]); // Restore the last filtered list, not all cats
+            setSortText("Sort ⬆");
         }
 
-        if(currentSort === "desc") {
-            setCurrentSort("");
-            const sortedCats = [...originalOrder];
-            setCatEntities(sortedCats);
-            setSortText("Sort ⬆")
-            setSelectedCat(null);
+        setSelectedCat(null);
+    };
+
+    const [ageGroup, setAgeGroup] = useState("Show Kittens");
+    const handleAgeGroups = () => {
+        const allCats = [...originalOrderRef.current];
+
+        const kittens = allCats.filter(cat => cat.age >= 0 && cat.age <= 2);
+        const adultCats = allCats.filter(cat => cat.age >= 3 && cat.age <= 10);
+        const seniorCats = allCats.filter(cat => cat.age >= 11);
+
+        let newCatList;
+
+        if (ageGroup === "Show Kittens") {
+            setAgeGroup("Show Adult Cats");
+            newCatList = kittens;
+        } else if (ageGroup === "Show Adult Cats") {
+            setAgeGroup("Show Senior Cats");
+            newCatList = adultCats;
+        } else if (ageGroup === "Show Senior Cats") {
+            setAgeGroup("Show All");
+            newCatList = seniorCats;
+        } else {
+            setAgeGroup("Show Kittens");
+            newCatList = allCats;
         }
+
+        setCatEntities(newCatList);
+        setPreSortCats(newCatList);
+        setCurrentSort("");
+        setSortText("Sort ⬆");
+        setSelectedCat(null);
     };
 
 
@@ -90,7 +121,8 @@ const CatList = ({ catEntities, setCatEntities }) => {
                 <Rectangle type="list">
                     <div className="row-container-list">
                         <FilterBar onSearch={setSearchQuery}></FilterBar>
-                        <SortButton className="sort-button" content={sortText} onClick={handleSort}></SortButton>
+                        <SortButton className="age-group-button-list" width="20vw" content={ageGroup} onClick={handleAgeGroups}></SortButton>
+                        <SortButton className="sort-button-list" width="20vh" content={sortText} onClick={handleSort}></SortButton>
                     </div>
                     <CatContainer catList={filteredCats} startIndex={startIndex} selectedCat={selectedCat} onCatSelect={handleCatSelection}></CatContainer>
                     <Pagination totalPages={totalPages} currentPage={currentPage} onPageChange={handlePageChange}></Pagination>
