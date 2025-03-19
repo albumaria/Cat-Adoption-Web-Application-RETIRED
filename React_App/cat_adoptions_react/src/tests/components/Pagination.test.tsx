@@ -9,6 +9,7 @@ describe('Pagination Component', () => {
 
     it('does not render pagination if totalPages is 1 or less', () => {
         const { container } = render(<Pagination currentPage={1} totalPages={1} onPageChange={onPageChangeMock} />);
+        // eslint-disable-next-line testing-library/no-node-access
         expect(container.firstChild).toBeNull();
     });
 

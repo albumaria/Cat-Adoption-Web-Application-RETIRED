@@ -1,6 +1,6 @@
-import { it, expect, describe, vi } from "vitest";
+import { it, expect, describe } from "vitest";
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import UpperBorder from "../../components/upper_border/UpperBorder"
 import UpperBorderCenteredText from "../../components/upper_border/UpperBorderCenteredText"
 import '@testing-library/jest-dom/vitest';

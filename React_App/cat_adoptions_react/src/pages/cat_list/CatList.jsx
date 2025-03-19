@@ -32,8 +32,12 @@ const CatList = ({ catEntities, setCatEntities }) => {
             setCurrentSort("");
             setSortText("Sort ⬆");
             setAgeGroup("Show Kittens");
-            setCatEntities([...originalOrderRef.current]);
-            navigate(`/${cat.name.toLowerCase()}`);
+
+            setCatEntities(prevCats => {
+                const updatedCats = [...prevCats];
+                navigate(`/${cat.name.toLowerCase()}`); // Navigate after updating
+                return updatedCats;
+            });
         } else {
             setSelectedCat(cat);
         }

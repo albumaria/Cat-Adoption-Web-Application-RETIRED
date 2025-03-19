@@ -1,6 +1,6 @@
-import { it, expect, describe, vi } from "vitest";
+import { it, expect, describe } from "vitest";
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import CatDetailText from "../../components/cat_detail_text/CatDetailText"
 import '@testing-library/jest-dom/vitest';
 

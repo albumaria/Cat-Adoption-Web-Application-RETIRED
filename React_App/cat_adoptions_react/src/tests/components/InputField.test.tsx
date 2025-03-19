@@ -1,6 +1,6 @@
 import { it, expect, describe, vi } from "vitest";
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import InputField from "../../components/input_field/InputField"
 import '@testing-library/jest-dom/vitest';
 
