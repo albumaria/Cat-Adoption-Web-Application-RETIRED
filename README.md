@@ -27,7 +27,7 @@ The user can:
 ### Update Cat Screen:
 ![image](https://github.com/user-attachments/assets/841d980b-bef3-4004-9764-f6ca05725a25)
 
-### Testing:
+### Testing: > npx vitest run --coverage
 ![image](https://github.com/user-attachments/assets/de00e910-6f21-4df5-926e-6e740db6c8cd)
 
 
