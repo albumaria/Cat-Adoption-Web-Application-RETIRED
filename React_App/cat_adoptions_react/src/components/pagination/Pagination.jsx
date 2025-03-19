@@ -1,4 +1,5 @@
 import "./Pagination.css"
+import React from 'react';
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     if (totalPages <= 1) return null; // Hide pagination if only 1 page
@@ -17,7 +18,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
                 <svg width="100%" height="100%" viewBox="0 0 60 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="60" height="36" rx="18" fill="#51294B"/>
                 </svg>
-                <span className="current-page-number">{currentPage}</span>
+                <span className="current-page-number" data-testid="current-page">{currentPage}</span>
             </button>
 
             {currentPage < totalPages && (

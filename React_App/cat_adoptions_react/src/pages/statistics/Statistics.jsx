@@ -1,6 +1,7 @@
 import React from "react";
 import "./Statistics.css";
 
+
 const Statistics = ({ catEntities }) => {
     const categories = {
         Kittens: { min: 0, max: 2, color: "#f4a2b8" },
@@ -25,7 +26,6 @@ const Statistics = ({ catEntities }) => {
     });
 
     const totalCats = Object.values(categoryCounts).reduce((sum, count) => sum + count, 0);
-    const getBarHeight = (count) => (totalCats ? (count / totalCats) * 100 : 0);
 
     return (
         <div>
@@ -38,7 +38,7 @@ const Statistics = ({ catEntities }) => {
                                 className="statistics-bar"
                                 style={{
                                     "--color": color,
-                                    "--size": `${getBarHeight(categoryCounts[category])}%`}}
+                                    "--size": `${(categoryCounts[category] / totalCats) * 100}%`}}
                             >
                                 <span className="statistics-number">{categoryCounts[category]}</span>
                                 <span className="statistics-skill">{category}</span>

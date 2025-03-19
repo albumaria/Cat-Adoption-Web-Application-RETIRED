@@ -1,4 +1,5 @@
 import "./CatDetailText.css"
+import React from 'react';
 
 const CatDetailText = ( { cat } ) => {
     return (

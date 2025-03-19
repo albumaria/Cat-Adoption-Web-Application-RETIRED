@@ -4,7 +4,7 @@ import "./CatContainer.css"
 
 const CatContainer = ({ catList, startIndex, selectedCat, onCatSelect }) => {
     const catsToShow = catList.slice(startIndex, startIndex + 10);
-    const placeholders = Array(10 - catsToShow.length).fill(null); // Fill empty spots with placeholders
+    const placeholders = Array(Math.max(0, 10 - catsToShow.length)).fill(null);
 
     return (
         <div className="cat-list">
@@ -16,7 +16,7 @@ const CatContainer = ({ catList, startIndex, selectedCat, onCatSelect }) => {
                 />
             ))}
             {placeholders.map((_, index) => (
-                <div key={`placeholder-${index}`} className="cat-placeholder" />
+                <div key={`placeholder-${index}`} className="cat-placeholder" data-testid="cat-placeholder"/>
             ))}
         </div>
     );

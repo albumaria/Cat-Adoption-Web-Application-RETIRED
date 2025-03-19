@@ -24,11 +24,13 @@ const InputFileButton = ( { onFileSelect } ) => {
                 Select Image
             </button>
             <input
+                id="file-input"
                 type="file"
                 accept="image/*"
                 ref={fileInputRef}
                 style={{ display: "none" }}
                 onChange={handleFileChange}
+                data-testid="file-input"
             />
             {fileName && <p className="file-name">{fileName}</p>}
         </div>

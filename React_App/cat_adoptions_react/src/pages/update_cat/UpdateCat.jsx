@@ -8,8 +8,8 @@ import InputFileButton from "../../components/input_file_button/InputFileButton"
 import UpperBorderCenteredText from "../../components/upper_border/UpperBorderCenteredText";
 
 const UpdateCat = ({ catEntities, setCatEntities }) => {
-    const { catName } = useParams(); // Get cat name from URL
-    const cat = catEntities.find(c => c.name.toLowerCase() === catName.toLowerCase()); // Find cat
+    const { catName } = useParams();
+    const cat = catEntities.find(c => c.name.toLowerCase() === catName.toLowerCase());
 
     const [name, setName] = useState(cat?.name || "");
     const [gender, setGender] = useState(cat?.gender || "");
