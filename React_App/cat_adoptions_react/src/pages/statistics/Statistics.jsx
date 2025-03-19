@@ -1,6 +1,5 @@
 import React from "react";
 import "./Statistics.css";
-import Rectangle from "../../components/rectangle/Rectangle";
 
 const Statistics = ({ catEntities }) => {
     const categories = {
