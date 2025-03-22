@@ -1,35 +1,78 @@
-const ThreadCats = [
-    { name: "Milo", gender: "M", age: 2, weight: 3.5, description: "A playful orange tabby.", image: "https://i.pinimg.com/736x/06/b2/c3/06b2c307dcdcad272d7e594214c11f70.jpg" },
-    { name: "Bella", gender: "F", age: 3, weight: 4.2, description: "A shy and elegant cat.", image: "https://i.pinimg.com/736x/17/b4/77/17b4776c4b55caa833b6b6437ae7a61e.jpg" },
-    { name: "Oliver", gender: "M", age: 1, weight: 2.8, description: "A mischievous kitten.", image: "https://i.pinimg.com/736x/41/1c/3c/411c3ce9a4ac4617ae963a8cd8293e01.jpg" },
-    { name: "Lunita", gender: "F", age: 4, weight: 5.0, description: "Loves to sleep in the sun.", image: "https://i.pinimg.com/736x/75/33/90/753390fcd4e401c86b4558172277890b.jpg" },
-    { name: "Charlie", gender: "M", age: 3, weight: 3.2, description: "A curious and friendly cat.", image: "https://i.pinimg.com/736x/06/b2/c3/06b2c307dcdcad272d7e594214c11f70.jpg" },
-    { name: "Daisy", gender: "F", age: 2, weight: 3.0, description: "A sweet and playful kitty.", image: "https://i.pinimg.com/736x/17/b4/77/17b4776c4b55caa833b6b6437ae7a61e.jpg" },
-    { name: "Max", gender: "M", age: 5, weight: 6.1, description: "A big, strong cat who loves food.", image: "https://i.pinimg.com/736x/41/1c/3c/411c3ce9a4ac4617ae963a8cd8293e01.jpg" },
-    { name: "Zoe", gender: "F", age: 3, weight: 3.6, description: "Always looking for adventures.", image: "https://i.pinimg.com/736x/75/33/90/753390fcd4e401c86b4558172277890b.jpg" },
-    { name: "Rocky", gender: "M", age: 2, weight: 3.9, description: "A tough but gentle giant.", image: "https://i.pinimg.com/736x/06/b2/c3/06b2c307dcdcad272d7e594214c11f70.jpg" },
-    { name: "Sophie", gender: "F", age: 4, weight: 4.3, description: "A quiet and gentle soul.", image: "https://i.pinimg.com/736x/17/b4/77/17b4776c4b55caa833b6b6437ae7a61e.jpg" },
-    { name: "Sammy", gender: "M", age: 3, weight: 3.3, description: "Loves to be the center of attention.", image: "https://i.pinimg.com/736x/41/1c/3c/411c3ce9a4ac4617ae963a8cd8293e01.jpg" },
-    { name: "Chloe", gender: "F", age: 2, weight: 3.1, description: "Always purring and content.", image: "https://i.pinimg.com/736x/75/33/90/753390fcd4e401c86b4558172277890b.jpg" },
-    { name: "Jack", gender: "M", age: 4, weight: 4.0, description: "A cat who loves to explore.", image: "https://i.pinimg.com/736x/06/b2/c3/06b2c307dcdcad272d7e594214c11f70.jpg" },
-    { name: "Lucy", gender: "F", age: 5, weight: 4.7, description: "An independent and clever cat.", image: "https://i.pinimg.com/736x/17/b4/77/17b4776c4b55caa833b6b6437ae7a61e.jpg" },
-    { name: "Ben", gender: "M", age: 2, weight: 3.4, description: "A curious kitten with lots of energy.", image: "https://i.pinimg.com/736x/41/1c/3c/411c3ce9a4ac4617ae963a8cd8293e01.jpg" },
-    { name: "Maggie", gender: "F", age: 6, weight: 4.8, description: "A calm and loving companion.", image: "https://i.pinimg.com/736x/75/33/90/753390fcd4e401c86b4558172277890b.jpg" },
-    { name: "Toby", gender: "M", age: 1, weight: 2.5, description: "A little rascal who loves to play.", image: "https://i.pinimg.com/736x/06/b2/c3/06b2c307dcdcad272d7e594214c11f70.jpg" },
-    { name: "Nala", gender: "F", age: 3, weight: 3.2, description: "A loving and affectionate cat.", image: "https://i.pinimg.com/736x/17/b4/77/17b4776c4b55caa833b6b6437ae7a61e.jpg" },
-    { name: "Oscar", gender: "M", age: 4, weight: 4.4, description: "Loves to hunt and explore.", image: "https://i.pinimg.com/736x/41/1c/3c/411c3ce9a4ac4617ae963a8cd8293e01.jpg" },
-    { name: "Tinkerbell", gender: "F", age: 2, weight: 2.9, description: "Small but full of energy.", image: "https://i.pinimg.com/736x/75/33/90/753390fcd4e401c86b4558172277890b.jpg" },
-    { name: "Leo", gender: "M", age: 3, weight: 3.8, description: "A playful and outgoing cat.", image: "https://i.pinimg.com/736x/06/b2/c3/06b2c307dcdcad272d7e594214c11f70.jpg" },
-    { name: "Whiskers", gender: "M", age: 2, weight: 3.1, description: "Always curious and looking for mischief.", image: "https://i.pinimg.com/736x/17/b4/77/17b4776c4b55caa833b6b6437ae7a61e.jpg" },
-    { name: "Misty", gender: "F", age: 4, weight: 4.1, description: "A soft and gentle spirit.", image: "https://i.pinimg.com/736x/41/1c/3c/411c3ce9a4ac4617ae963a8cd8293e01.jpg" },
-    { name: "Maximus", gender: "M", age: 5, weight: 6.2, description: "A gentle giant who loves cuddles.", image: "https://i.pinimg.com/736x/75/33/90/753390fcd4e401c86b4558172277890b.jpg" },
-    { name: "Phoebe", gender: "F", age: 1, weight: 2.4, description: "A playful kitten who loves to jump.", image: "https://i.pinimg.com/736x/06/b2/c3/06b2c307dcdcad272d7e594214c11f70.jpg" },
-    { name: "Cleo", gender: "F", age: 3, weight: 3.3, description: "A cat who loves to sit on laps.", image: "https://i.pinimg.com/736x/17/b4/77/17b4776c4b55caa833b6b6437ae7a61e.jpg" },
-    { name: "Jackie", gender: "M", age: 4, weight: 4.5, description: "Loves attention and affection.", image: "https://i.pinimg.com/736x/41/1c/3c/411c3ce9a4ac4617ae963a8cd8293e01.jpg" },
-    { name: "Pumpkin", gender: "F", age: 2, weight: 3.0, description: "A cute and friendly companion.", image: "https://i.pinimg.com/736x/75/33/90/753390fcd4e401c86b4558172277890b.jpg" },
-    { name: "Ziggy", gender: "M", age: 3, weight: 3.7, description: "A cat who loves to play with toys.", image: "https://i.pinimg.com/736x/06/b2/c3/06b2c307dcdcad272d7e594214c11f70.jpg" },
-    { name: "Maggie", gender: "F", age: 5, weight: 4.0, description: "An independent and calm cat.", image: "https://i.pinimg.com/736x/17/b4/77/17b4776c4b55caa833b6b6437ae7a61e.jpg" },
-    { name: "Simba", gender: "M", age: 4, weight: 4.6, description: "A brave cat with a big heart.", image: "https://i.pinimg.com/736x/41/1c/3c/411c3ce9a4ac4617ae963a8cd8293e01.jpg" }
-];
+import { faker } from '@faker-js/faker';
+import CatEntities from './CatEntities';
+
+const existingNames = new Set(CatEntities.map(cat => cat.name));
+
+const generateUniqueName = (usedNames) => {
+    let name;
+    do {
+        name = faker.person.firstName();
+    } while (usedNames.has(name));
+    usedNames.add(name);
+    return name;
+};
+
+const fetchCatImage = () => {
+    const request = new XMLHttpRequest();
+    request.open("GET", "https://api.thecatapi.com/v1/images/search", false); // false makes it synchronous
+    request.setRequestHeader("x-api-key", "live_vqheiDqxrBRmftyRK83qVlcbmM4fv8PfvvODBg7XLAQ8DQmcWdrVcutiUoMxkPss");
+    request.send(null);
+
+    if (request.status === 200) {
+        const response = JSON.parse(request.responseText);
+        return response[0]?.url || "https://via.placeholder.com/300"; // Default placeholder if no image found
+    }
+
+    return "https://via.placeholder.com/300"; // Fallback image
+};
+
+const generateDescription = (name, gender, age) => {
+    const personalityTraits = [
+        "playful and full of energy",
+        "calm and affectionate",
+        "curious about everything",
+        "a little mischievous but very loving",
+        "shy at first, but warms up quickly",
+        "always looking for a warm lap to sit on",
+        "a big talker who loves attention",
+        "an independent spirit with a gentle heart",
+        "a little clumsy but incredibly sweet",
+        "a brave explorer who loves adventure"
+    ];
+
+    const trait = faker.helpers.arrayElement(personalityTraits);
+
+    let baseDescription = `${name} is a ${trait} cat. `;
+
+    if (age <= 2) {
+        baseDescription += `${gender === "M" ? "He" : "She"} is still very young and loves to play all day long.`;
+    } else if (age <= 5) {
+        baseDescription += `${gender === "M" ? "He" : "She"} enjoys both playtime and naps, making ${gender === "M" ? "him" : "her"} the perfect companion.`;
+    } else if (age <= 10) {
+        baseDescription += `${gender === "M" ? "He" : "She"} has a gentle personality and loves cuddles but also appreciates ${gender === "M" ? "his" : "her"} space.`;
+    } else {
+        baseDescription += `${gender === "M" ? "He" : "She"} is a wise and relaxed cat who enjoys quiet moments and cozy spots.`;
+    }
+
+    return baseDescription;
+};
+
+const generateRandomCat = (usedNames) => {
+    const name = generateUniqueName(usedNames);
+    const gender = faker.helpers.arrayElement(["M", "F"]);
+    const age = faker.number.int({ min: 1, max: 15 });
+
+    return {
+        name,
+        gender,
+        age,
+        weight: parseFloat(faker.number.float({ min: 2.5, max: 8, precision: 0.1 }).toFixed(1)),
+        description: generateDescription(name, gender, age),
+        image: fetchCatImage()
+    };
+};
+
+const usedNames = new Set(existingNames);
+const ThreadCats = Array.from({ length: 30 }, () => generateRandomCat(usedNames));
 
 export default ThreadCats;
