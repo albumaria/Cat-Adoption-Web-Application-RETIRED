@@ -1,9 +1,9 @@
 # Cat-Adoption-Web-Application
 
-# Check the new version out!
+# Remade Project:
 https://github.com/albumaria/Cat-Distribution-System-React-App
 
-The app allows CRUD operations on a list of cats. There is no object persistance.
+---
 
 ### Home Screen:
 - The user can press the Show Cat List button to enter the list view of all of the cats
